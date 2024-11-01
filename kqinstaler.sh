@@ -20,9 +20,9 @@ mount.ntfs-3g /dev/vda2 "$MOUNT_POINT"
 cat > "$MOUNT_POINT/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup/setup.bat" <<EOF
 @ECHO OFF
 REM Konfigurasi IP statis
-netsh interface ip set address "Ethernet" static YOUR_IP_ADDRESS 255.255.240.0 YOUR_GATEWAY
-netsh interface ip add dns "Ethernet" addr=1.1.1.1
-netsh interface ip add dns "Ethernet" addr=8.8.8.8
+netsh interface ip set address "Ethernet Instance 0 2" static YOUR_IP_ADDRESS 255.255.240.0 YOUR_GATEWAY
+netsh interface ip add dns "Ethernet Instance 0 2" addr=1.1.1.1
+netsh interface ip add dns "Ethernet Instance 0 2" addr=8.8.8.8
 EXIT
 EOF
 
