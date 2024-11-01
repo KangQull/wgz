@@ -5,10 +5,7 @@ WINDOWS_IMAGE_URL="https://cloudshydro.tech/s/7f7JCBDBQzGffyq/download?path=wind
 MOUNT_POINT="/mnt/windows"
 
 # Mengunduh image Windows
-wget --no-check-certificate -O windows10.gz "$WINDOWS_IMAGE_URL"
-
-# Mengekstrak image ke disk
-gunzip -c windows10.gz | dd of=/dev/vda bs=3M status=progress
+wget -O- --no-check-certificate $WINDOWS_IMAGE_URL | gunzip | dd of=/dev/vda bs=3M status=progress
 
 # Membuat direktori mount jika belum ada
 mkdir -p "$MOUNT_POINT"
