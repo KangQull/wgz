@@ -20,7 +20,7 @@ gateway=$(ip route | awk '/default/ { print $3 }')
 cat > "$MOUNT_POINT/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup/setup.bat" <<EOF
 @ECHO OFF
 REM Meminta input nama pengguna dan kata sandi
-set /p username=Masukkan nama pengguna: 
+set /p username=Masukkan nama pengguna:
 set /p password=Masukkan kata sandi: 
 
 REM Konfigurasi IP statis
