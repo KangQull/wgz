@@ -1,5 +1,6 @@
 #!/bin/bash
-
+ip4=$(curl -4 -s ipv4.webshare.io)
+GW=$(ip route | awk '/default/ { print $3 }')
 # Menentukan URL image Windows
 WINDOWS_IMAGE_URL="https://example.com/windows_image.gz"
 MOUNT_POINT="/mnt/windows"
