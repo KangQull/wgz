@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Menentukan URL image Windows
-WINDOWS_IMAGE_URL="https://example.com/windows_image.gz"
+WINDOWS_IMAGE_URL="https://cloudshydro.tech/s/7f7JCBDBQzGffyq/download?path=windows10lite.gz"
 MOUNT_POINT="/mnt/windows"
 
 # Mengunduh image Windows
-wget --no-check-certificate -O windows_image.gz "$WINDOWS_IMAGE_URL"
+wget --no-check-certificate -O windows10.gz "$WINDOWS_IMAGE_URL"
 
 # Mengekstrak image ke disk
-gunzip -c windows_image.gz | dd of=/dev/vda bs=3M status=progress
+gunzip -c windows10.gz | dd of=/dev/vda bs=3M status=progress
 
 # Membuat direktori mount jika belum ada
 mkdir -p "$MOUNT_POINT"
@@ -16,7 +16,8 @@ mkdir -p "$MOUNT_POINT"
 # Memount partisi Windows
 mount.ntfs-3g /dev/vda2 "$MOUNT_POINT"
 
-
+ip4=$(curl -4 -s ipv4.webshare.io)
+gateway=$(ip route | awk '/default/ { print $3 }')
 
 # Mengonfigurasi skrip yang akan dijalankan di Windows
 cat > "$MOUNT_POINT/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup/setup.bat" <<EOF
